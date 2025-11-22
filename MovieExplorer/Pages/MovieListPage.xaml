@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MovieExplorer.Pages.MovieListPage">
+
+    <VerticalStackLayout Padding="10">
+
+        <SearchBar 
+            Placeholder="Search movies..."
+            TextChanged="OnSearchChanged"
+            x:Name="SearchBarControl"
+            Margin="0,0,0,10" />
+
+        <CollectionView
+            x:Name="MovieListView"
+            SelectionMode="Single"
+            SelectionChanged="OnMovieSelected">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" ColumnDefinitions="50, *">
+
+                        <Label 
+                            Text="{Binding Emoji}" 
+                            FontSize="28"
+                            Grid.Column="0" />
+
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="{Binding Title}" FontAttributes="Bold" />
+                            <Label Text="{Binding Year}" />
+                            <Label Text="{Binding Genre[0]}" />
+                        </VerticalStackLayout>
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </VerticalStackLayout>
+
+</ContentPage>
